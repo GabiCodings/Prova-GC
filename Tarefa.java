@@ -1,14 +1,30 @@
-public class Tarefa {
-    public static void main(String[] args) {
-        int prioridade = 4;
-        int urgencia = 8;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-        if(prioridade > 3 && urgencia > 7) {
-            System.out.println("Tarefa Critica");
-        } else if (prioridade > 3 || urgencia > 7) {
-            System.out.println("Tarefa Importante");
-        } else {
-            System.out.println("Tarefa Comum");
-        }
+public class Tarefa implements Comparable<Tarefa> {
+
+    String titulo;
+
+    public Tarefa(String titulo) {
+        this.titulo = titulo;
     }
+
+    public int compareTo(Tarefa outra) {
+        return this.titulo.compareTo(outra.titulo);
+    }
+
+    public static void main(String[] args) {
+        List<Tarefa> tarefas = new ArrayList<>();
+
+        tarefas.add(new Tarefa("Estudar"));
+        tarefas.add(new Tarefa("Almoçar"));
+        tarefas.add(new Tarefa("Dormir"));
+
+        Collections.sort(tarefas);
+
+        System.out.println(tarefas);
+
+    }
+    
 }
